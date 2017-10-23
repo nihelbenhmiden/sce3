@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 oct. 2017 16:27:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="persistance.Client" table="client" catalog="mabase">
+        <id name="idClient" type="int">
+            <column name="idClient" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="adresse" />
+        </property>
+    </class>
+</hibernate-mapping>
