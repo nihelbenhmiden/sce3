@@ -2,8 +2,11 @@ package persistance;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 public class test {
 public void ajouter(Client C){
@@ -20,7 +23,7 @@ public List<Client> findAll(){
 	
 	Session s=Dbsession.getSessionFactory().openSession();	
 	List<Client> l=s.createQuery("from Client").list();
-	
+	s.close();
 	return l;
 	
 	
@@ -28,7 +31,7 @@ public List<Client> findAll(){
 public Client findByid(int x){
 	Session s=Dbsession.getSessionFactory().openSession();
 	Client client=(Client)s.get(Client.class,x);
-	
+	s.close();
 	return client;
 	
 }
@@ -50,12 +53,20 @@ public void update(Client c){
 	tx.commit();
 	s.close();	
 }
+public List<Client> findbycritere(String Nom){
+	Session s=Dbsession.getSessionFactory().openSession();
+	Criteria crt=s.createCriteria(Client.class);
+	Criterion c=Restrictions.eq("nom",Nom);
+	crt.add(c);
+	s.close();
+	return crt.list();
+}
 public static void main(String[] args) {
 	test t=new test();
 	Client c=new Client();
-	c.setIdClient(147);
+	c.setIdClient(2166);
 	c.setNom("nihel");
-	c.setPrenom("bh");
+	c.setPrenom("ben messao");
 	c.setAdresse("ariena");
 	t.ajouter(c);
 	c=t.findByid(147);
@@ -64,6 +75,12 @@ public static void main(String[] args) {
 	c=t.findByid(123);
 	c.setNom("nanou");
 	t.update(c);
+	List<Client> L;
+	L=t.findbycritere("nihel");
+	for (int i = 0; i<L.size();i++){
+	
+		System.out.print(L.get(i).getPrenom()+"--");
+	}
 	//System.out.println(c.getNom());
 	//List<Client> clients=t.findAll();
      //for(int i=0;i<clients.size();i++){
