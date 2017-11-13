@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head></h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="80">
+
+<h:outputText value="Bienvenue dns notre application" />
+	
+		</p:layoutUnit>
+		<p:layoutUnit position="south" size="100">
+			<h:outputText value="Copyright 2012." />
+		</p:layoutUnit>
+		<p:layoutUnit position="west" size="200"
+			style="width:200;border-width:1px;">
+			<ui:include src="/menu.xhtml"></ui:include>
+		</p:layoutUnit>
+		<p:layoutUnit position="east" size="200"
+			style="width:200;border-width:1px;">
+
+		</p:layoutUnit>
+		<p:layoutUnit position="center" style="width:200; border-width:0px;">
+<h:form>
+<h:panelGrid>
+<h:outputText value="id" />
+<p:inputText value="#{clientManagedBean.selectClient.idClient}" />
+<h:outputText value="nom" />
+<p:inputText value="#{clientManagedBean.selectClient.nom}" />
+<h:outputText value="prenom" />
+<p:inputText value="#{clientManagedBean.selectClient.prenom}" />
+<h:outputText value="adresse" />
+<p:inputText value="#{clientManagedBean.selectClient.adresse}" />
+<h:commandButton actionListener="#{clientManagedBean.modif2}" value="Valider" />
+</h:panelGrid>
+</h:form>
+			
+
+
+		</p:layoutUnit>
+	</p:layout>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+</html>
